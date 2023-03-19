@@ -2,9 +2,9 @@
 // DEPENDENCIES
 /////////////////////////
 // get .env variables
-// require("dotenv").config();
-// pull PORT from .env, give default value of 3000
-// const { PORT = 3000, DATABASE_URL } = process.env;
+require("dotenv").config()
+const PORT = process.env.PORT || 4000
+const DATABASE_URL = process.env.DATABASE_URL
 // import express
 const express = require("express");
 // create application object
