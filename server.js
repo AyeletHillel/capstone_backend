@@ -21,22 +21,15 @@ const morgan = require("morgan");
 ////////////////////////////////
 // Establish Connection
 mongoose.connect(DATABASE_URL, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  });
-  // Connection Events
-  mongoose.connection
-    .on("open", () => console.log("Your are connected to mongoose"))
-    .on("close", () => console.log("Your are disconnected from mongoose"))
-    .on("error", (error) => console.log(error));
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
+// Connection Events
+mongoose.connection
+  .on("open", () => console.log("Your are connected to mongoose"))
+  .on("close", () => console.log("Your are disconnected from mongoose"))
+  .on("error", (error) => console.log(error));
 
-/////////////////////////
-// MIDDLEWARE
-/////////////////////////
-
-app.use(cors()); // to prevent cors errors, open access to all origins
-app.use(morgan("dev")); // logging
-app.use(express.json()); // parse json bodies
 
 /////////////////////////
 // Models
@@ -50,12 +43,14 @@ const ResultsSchema = new mongoose.Schema({
 
 const Results = mongoose.model("Results", ResultsSchema)
 
-// const results = [
-//     {input: "I love you, Poo", score: 3, sentiment: "positive"},
-//     {input: "I believe I can fly, I believe I can touch the sky", score: 4, sentiment: "positive"},
-//     {input: "My mama don't like you and she likes everyone", score: -2, sentiment: "negative"},
-//     {input: "At first I was afraid, I was petrified, kept thinkin' I could never live without you by my side", score: -3, sentiment: "negative"},
-// ]
+///////////////////////////////
+// MiddleWare
+////////////////////////////////
+
+app.use(cors()); // to prevent cors errors, open access to all origins
+app.use(morgan("dev")); // logging
+app.use(express.json()); // parse json bodies
+
 
 /////////////////////////
 // Routes
