@@ -47,7 +47,7 @@ const Results = mongoose.model("Results", ResultsSchema)
 // MiddleWare
 ////////////////////////////////
 
-app.use(cors()); // to prevent cors errors, open access to all origins
+app.use(cors({ origin: '*' })); // to prevent cors errors, open access to all origins
 app.use(morgan("dev")); // logging
 app.use(express.json()); // parse json bodies
 
